@@ -22,7 +22,7 @@ function SortComponent() {
             {/* SECOND DIV */}
             <div>
                 <div>
-                    <img />
+                    <img alt="image"/>
                     <p>Address</p>
                     <p> Starvs</p>
                     <p>0.3 Miles Away   </p>
