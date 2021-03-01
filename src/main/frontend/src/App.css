@@ -13,8 +13,8 @@
   --clr-nav-bg: rgb(202, 163, 53);
   --clr-nav-btn-bg: rgb(100, 100, 66);
   --clr-btn-text: rgb(36, 133, 76);
-  --clr-locker-bg: rgb(185, 185, 185);
-  --clr-subheader-text: gray;
+  --clr-locker-bg: #DDDDDD;
+  --clr-subheader-text: #6E6E6E;
   --clr-button-text: #fff;
   --clr-nav-button: rgb(197, 202, 165);
 }
@@ -92,18 +92,57 @@ position: relative;
 
 /*INPUT DIV*/
 
+.input{
+  width: 80%;
+
+}
 .input-div{
   width: 48%;
   height: 100px;
-  background: var(--clr-btn-text);
+  background: var(--clr-button-text);
 /*  border: 1px solid red;*/
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
 }
 
 .input-div img{
   height: 70px;
   margin-right: 20px;
+  margin-bottom: 20px;
 
+}
+
+/* SORTING DIV*/
+.locker-sort{
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--clr-locker-bg);
+
+}
+
+.locker-sort > *{
+  font-size: var(--font-0);
+  font-weight: bold;
+  color: var(--clr-subheader-text);
+  margin: 20px;
+
+}
+
+.order-sort{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-sort :nth-child(1), .order-sort :nth-child(2){
+  margin-right: 20px;
+}
+/* MAIN LOCKER*/
+
+.main-locker{
+  display: flex;
 }

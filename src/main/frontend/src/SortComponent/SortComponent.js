@@ -1,28 +1,58 @@
-import React from 'react';
-
+import React, {useState} from 'react';
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
 
 function SortComponent() {
+
+    const [currency, setCurrency] = useState('Closest');
+    const currencies = [
+        {
+            value: 'Closest',
+            label: 'Closest',
+        },
+        {
+            value: 'Lowest Price',
+            label: 'Lowest Price',
+        },
+
+    ];
+    const handleChange = (event) => {
+        setCurrency(event.target.value);
+    };
     return (
 
-        <div>
+        <section className="sorting-div">
             <div className="locker-sort">
                 <div>
                     <p>6 Open Lockers Available</p>
                 </div>
 
-                <div>
+                <div className="order-sort">
                     <p>Sort By</p>
-                    <div>
-                        {/* Insert Dropdown With react */}
-                    </div>
+
+                        <TextField
+                            id="standard-select-currency"
+                            select
+                            label=""
+                            value={currency}
+                            onChange={handleChange}
+                            helperText=""
+                        >
+                            {currencies.map((option) => (
+                                <MenuItem key={option.value} value={option.value}>
+                                    {option.label}
+                                </MenuItem>
+                            ))}
+                        </TextField>
+
                 </div>
 
             </div>
 
             {/* SECOND DIV */}
-            <div>
+            <div className="main-locker">
                 <div>
-                    <img alt="image"/>
+                    <img alt="background"/>
                     <p>Address</p>
                     <p> Starvs</p>
                     <p>0.3 Miles Away   </p>
@@ -55,7 +85,7 @@ function SortComponent() {
                 </div>
             </div>
 
-        </div>
+        </section>
     )
 }
 
