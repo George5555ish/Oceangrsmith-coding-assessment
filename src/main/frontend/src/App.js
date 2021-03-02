@@ -2,8 +2,15 @@ import './App.css';
 import NavBar from './NavBar/Navbar';
 import LockerSearch from './LockerSearch/LockerSearch';
 import SortComponent from './SortComponent/SortComponent';
+import RentalPage from "./RentalPage/RentalPage";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
 
 
 function App() {
@@ -29,12 +36,23 @@ function App() {
         ).catch((err) => console.log(err));
     }, []);
   return (
-      <div>
-        <NavBar />
-        <LockerSearch locations={locations} handleExternalFilter={handleExternalFilter}/>
-        <SortComponent externalFilter={externalFilter}/>
 
-      </div>
+      <Router>
+          <Switch>
+              <Route path="/" exact>
+                  <div>
+                      <NavBar />
+                      <LockerSearch locations={locations} handleExternalFilter={handleExternalFilter}/>
+                      <SortComponent externalFilter={externalFilter}/>
+
+                  </div>
+              </Route>
+
+              <Route path="/rental-page">
+                    <RentalPage />
+              </Route>
+          </Switch>
+      </Router>
   );
 }
 

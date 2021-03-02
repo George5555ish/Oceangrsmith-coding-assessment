@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import image3 from '../images/image3.JPG';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
+import {
+    Link
+} from "react-router-dom";
 
 function SortComponent({externalFilter}) {
 
@@ -112,9 +115,12 @@ function SortComponent({externalFilter}) {
                                     <h3> n450 per item/mo N15,000 XX no of orders<br></br> Online only price</h3>
                                     <h3> 1N for first rent</h3>
                                     <h3> 2 Available</h3>
-                                    <button className="locker-button">
-                                        Rent Now
-                                    </button>
+                                    <Link to="/rental-page">
+                                        <button className="locker-button">
+                                            Rent Now
+                                        </button>
+                                    </Link>
+
                                 </div>
                             ) : <div className="locker-item">
                                     No Lockers Available For this Location
