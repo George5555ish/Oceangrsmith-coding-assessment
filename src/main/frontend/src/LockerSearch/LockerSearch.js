@@ -16,8 +16,8 @@ function LockerSearch({locations, handleExternalFilter}) {
 
         const allLocations = locations?.map(
             (locationItem) => {
-                const {id, availableLockers, location} = locationItem;
-             /*   console.log(id, availableLockers);*/
+                const { location} = locationItem;
+
                 return location;
             }
         );
@@ -70,9 +70,9 @@ function LockerSearch({locations, handleExternalFilter}) {
         <div className="img-background ">
             <div className="img-bg-child ">
                 <h1>Find a Locker</h1>
-                <div className="input-div dropdown active">
+                <div className="input-div dropdown active" id="my-lockers">
 
-              <div className="input ">
+              <div className="input" >
                   <TextField id="standard-basic"
                              label="City Or State"
                              fullWidth
@@ -86,7 +86,7 @@ function LockerSearch({locations, handleExternalFilter}) {
 
                             {
                                 finalLockers.map(
-                                    item => <a>
+                                    (item, key) => <a href="#my-lockers" key={key}>
                                         {item}
                                     </a>
                                 )

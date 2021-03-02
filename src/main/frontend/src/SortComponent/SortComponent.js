@@ -9,7 +9,7 @@ import {
 function SortComponent({externalFilter}) {
 
     const [sortValue, setSortValue] = useState('Closest');
-    const [featured, setFeatured] = useState('Featured');
+    const [featured, setFeatured] = useState('Small');
     const sortArray = [
         {
             value: 'Closest',
@@ -110,7 +110,7 @@ function SortComponent({externalFilter}) {
 
                         {   externalFilter.length !== 0 ?
                             externalFilter.map(
-                                item => <div className="locker-item">
+                                (item, key) => <div className="locker-item" key={key}>
                                     <h3 className="width-div">{item}</h3>
                                     <h3> n450 per item/mo N15,000 XX no of orders<br></br> Online only price</h3>
                                     <h3> 1N for first rent</h3>

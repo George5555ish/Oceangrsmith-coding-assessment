@@ -9,7 +9,7 @@ const RentalPage = () => {
     return (
         <div style={{margin: "45px"}}>
           <Link to="/" >
-          <a>   Return Home</a>
+          <button>Return Home</button>
           </Link>
 
          <h1>   Navigation to the rental page is successful</h1>
