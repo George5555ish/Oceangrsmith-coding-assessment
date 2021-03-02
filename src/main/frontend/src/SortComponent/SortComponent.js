@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
+import image3 from '../images/image3.JPG';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 
 function SortComponent() {
 
-    const [currency, setCurrency] = useState('Closest');
-    const currencies = [
+    const [sortValue, setSortValue] = useState('Closest');
+    const [featured, setFeatured] = useState('Featured');
+    const sortArray = [
         {
             value: 'Closest',
             label: 'Closest',
@@ -16,8 +18,29 @@ function SortComponent() {
         },
 
     ];
-    const handleChange = (event) => {
-        setCurrency(event.target.value);
+
+    const featuredArray = [
+        {
+            value: 'Small',
+            label: 'Small',
+        },
+        {
+            value: 'Medium',
+            label: 'Medium',
+        },
+        {
+            value: 'Large',
+            label: 'Large',
+        },
+
+
+    ];
+    const handleSortValue = (event) => {
+        setSortValue(event.target.value);
+    };
+
+    const handleFeatured = (event) => {
+        setFeatured(event.target.value);
     };
     return (
 
@@ -34,11 +57,11 @@ function SortComponent() {
                             id="standard-select-currency"
                             select
                             label=""
-                            value={currency}
-                            onChange={handleChange}
+                            value={sortValue}
+                            onChange={handleSortValue}
                             helperText=""
                         >
-                            {currencies.map((option) => (
+                            {sortArray.map((option) => (
                                 <MenuItem key={option.value} value={option.value}>
                                     {option.label}
                                 </MenuItem>
@@ -50,37 +73,50 @@ function SortComponent() {
             </div>
 
             {/* SECOND DIV */}
-            <div className="main-locker">
-                <div>
-                    <img alt="background"/>
-                    <p>Address</p>
-                    <p> Starvs</p>
-                    <p>0.3 Miles Away   </p>
+            <div className="padding-class main-locker">
+                <div className='padding-class img-container'>
+                    <img alt="background" src={image3}/>
+                    <p className="left-div-child top-pad-class">22A Adeola Odeku Street, VI, Lagos</p>
+                    <p> ⭐⭐⭐⭐⭐</p>
+                    <p className="left-div-child top-pad-class">0.3 Miles Away   </p>
                 </div>
 
-                <div>
-                    <div>
-                        <div>
-                            {/* Dropdown Here */}
-                        </div>
+                <div className="left-div">
+                    <div className="left-div-input padding-class">
 
-                        <div> <p>View the guide size</p></div>
+                            <TextField
+                                id="standard-select-currency"
+                                select
+                                label=""
+                                value={featured}
+                                onChange={handleFeatured}
+                                helperText=""
+                            >
+                                {featuredArray.map((option) => (
+                                    <MenuItem key={option.value} value={option.value}>
+                                        {option.label}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
+
+
+                       <p className="left-div-child">View the guide size</p>
                     </div>
 
-                    <div>
-                        <div>
-                            <h3> Small H295" W460" D520MM</h3>
-                            <h3> n450 per item/no</h3>
+                    <div className='padding-class'>
+                        <div className="locker-item">
+                            <h3 className="width-div"> Small H295* W460* D520MM</h3>
+                            <h3> n450 per item/mo N15,000 XX no of orders<br></br> Online only price</h3>
                             <h3> 1N for first rent</h3>
                             <h3> 2 Available</h3>
-                            <button>
+                            <button className="locker-button">
                                 Rent Now
                             </button>
                         </div>
                     </div>
 
                     <div>
-                        View all lockers at this location
+                        <p className="left-div-child padding-class">View all lockers at this location</p>
                     </div>
                 </div>
             </div>
