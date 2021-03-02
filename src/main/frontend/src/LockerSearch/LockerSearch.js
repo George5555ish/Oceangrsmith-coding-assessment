@@ -3,35 +3,67 @@ import TextField from '@material-ui/core/TextField';
 import image2 from '../images/image2.JPG';
 import './LockerSearch.css';
 
-function LockerSearch({locations}) {
+function LockerSearch({locations, handleExternalFilter}) {
 
 
 
     const [typedLocation, setTypedLocation] = useState('');
     const [availableLocations, setAvailableLocations] = useState([])
+    const [finalLockers, setFinalLockers] = useState([]);
 
     const handleTypedLocation = (e) => {
         const locationString = e.target.value;
-        const allLocations = locations.map(
+
+        const allLocations = locations?.map(
+            (locationItem) => {
+                const {id, availableLockers, location} = locationItem;
+             /*   console.log(id, availableLockers);*/
+                return location;
+            }
+        );
+        const filteredArray = allLocations?.filter(
+            location => location?.toLowerCase().includes(locationString.toLowerCase())
+        );
+
+
+        const allLockers = locations?.map(
             (location) => {
-                return location.location;
+
+                const {availableLockers} = location;
+                return availableLockers;
             }
         );
 
-        const filteredArray = allLocations.filter(
-            location => location.toLowerCase().includes(locationString.toLowerCase())
+        const filteredLockers = allLockers?.filter(
+            (locker, index) => locker[0].toLowerCase().includes(locationString.toLowerCase())
         );
 
+        const spreadLockers = [];
+
+        for (let i = 0; i < filteredLockers.length; i++){
+
+            let spreadArray = filteredLockers[i];
+
+            spreadArray.forEach(
+                item => spreadLockers.push(item)
+            )
 
 
-        /*if (l)*/
+        }
+
+        handleExternalFilter(spreadLockers)
+
+
+
 
 
         setTypedLocation(locationString);
         setAvailableLocations(filteredArray);
+        setFinalLockers(spreadLockers);
 
-        console.log(availableLocations);
-        console.log(availableLocations.length);
+
+
+
     }
     return (
 
@@ -53,12 +85,13 @@ function LockerSearch({locations}) {
                         availableLocations.length !== 0 && availableLocations.length !== 7 ?  <div className="dropdown-content">
 
                             {
-                               availableLocations.map(
-                                   (location, key) => <a key={key} href="#">
-                                       {location}
-                                </a>
-                               )
+                                finalLockers.map(
+                                    item => <a>
+                                        {item}
+                                    </a>
+                                )
                             }
+
 
                         </div> : null
                     }

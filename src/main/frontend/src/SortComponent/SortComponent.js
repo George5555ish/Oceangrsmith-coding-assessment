@@ -3,7 +3,7 @@ import image3 from '../images/image3.JPG';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 
-function SortComponent() {
+function SortComponent({externalFilter}) {
 
     const [sortValue, setSortValue] = useState('Closest');
     const [featured, setFeatured] = useState('Featured');
@@ -104,15 +104,24 @@ function SortComponent() {
                     </div>
 
                     <div className='padding-class'>
-                        <div className="locker-item">
-                            <h3 className="width-div"> Small H295* W460* D520MM</h3>
-                            <h3> n450 per item/mo N15,000 XX no of orders<br></br> Online only price</h3>
-                            <h3> 1N for first rent</h3>
-                            <h3> 2 Available</h3>
-                            <button className="locker-button">
-                                Rent Now
-                            </button>
-                        </div>
+
+                        {   externalFilter.length !== 0 ?
+                            externalFilter.map(
+                                item => <div className="locker-item">
+                                    <h3 className="width-div">{item}</h3>
+                                    <h3> n450 per item/mo N15,000 XX no of orders<br></br> Online only price</h3>
+                                    <h3> 1N for first rent</h3>
+                                    <h3> 2 Available</h3>
+                                    <button className="locker-button">
+                                        Rent Now
+                                    </button>
+                                </div>
+                            ) : <div className="locker-item">
+                                    No Lockers Available For this Location
+                            </div>
+
+                        }
+
                     </div>
 
                     <div>
